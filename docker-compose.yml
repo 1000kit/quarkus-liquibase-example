@@ -1,0 +1,15 @@
+version: "2"
+services:
+  liquibase-postgres:
+    container_name: liquibase-postgres
+    image: postgres:10.5
+    environment:
+      POSTGRES_DB: "liquibase"
+      POSTGRES_USER: "liquibase"
+      POSTGRES_PASSWORD: "liquibase"
+    ports:
+      - "5432:5432"
+    networks:
+      - test
+networks:
+  test:
