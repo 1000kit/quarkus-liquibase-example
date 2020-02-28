@@ -1,7 +1,17 @@
 # quarkus-liquibase
 
+### Build native application
 
-### Build docker image:
+To create native application run this command (GraalVM is required)
+```shell script
+mvn clean package -Pnative
+```
+or you can run native build inside docker image use this command
+```shell script
+mvn clean package -Pnative -Dquarkus.native.container-build=true
+```
+
+### Build docker image
 ```shell script
 docker build -t tkit/quarkus-liquibase-example -f src/main/docker/Dockerfile .
 ```
