@@ -14,4 +14,10 @@
         </createTable>
     </changeSet>
 
+    <changeSet author="dev" id="2">
+        <addColumn tableName="EVENT">
+            <column name="INFO" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

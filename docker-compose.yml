@@ -11,5 +11,15 @@ services:
       - "5432:5432"
     networks:
       - test
+  quarkus-liquibase-example:
+    container_name: quarkus-liquibase-example
+    image: tkit/quarkus-liquibase-example:latest
+    environment:
+      QUARKUS_DATASOURCE_URL: jdbc:postgresql://liquibase-postgres:5432/liquibase?sslmode=disable
+      QUARKUS_DATASOURCE_USERNAME: liquibase
+      QUARKUS_DATASOURCE_PASSWORD: liquibase
+      QUARKUS_LIQUIBASE_MIGRATE_AT_START: "false"
+    networks:
+      - test
 networks:
   test:

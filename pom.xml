@@ -5,9 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.tkit.quarkus</groupId>
-    <artifactId>quarkus-liquibase</artifactId>
+    <artifactId>quarkus-liquibase-example</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>quarkus-liquibase</name>
+    <name>quarkus-liquibase-example</name>
 
     <properties>
         <quarkus.version>999-SNAPSHOT</quarkus.version>
@@ -16,6 +16,8 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <docker.registry>dev</docker.registry>
+        <docker.image.prefix>tkit</docker.image.prefix>
     </properties>
 
     <dependencyManagement>
@@ -120,9 +122,9 @@
                                     <goal>verify</goal>
                                 </goals>
                                 <configuration>
-                                    <systemPropertyVariables>
-                                        <test.docker.image>${docker.registry}/${docker.image.prefix}/${project.artifactId}:${project.version}</test.docker.image>
-                                    </systemPropertyVariables>
+                                    <systemProperties>
+                                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+                                    </systemProperties>
                                 </configuration>
                             </execution>
                         </executions>
